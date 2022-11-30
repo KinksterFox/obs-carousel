@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="src/style.css">
     <script src="src/script.js" defer></script>
-    <script src="../node_modules/animejs/lib/anime.min.js" defer></script>
+    <script src="src/config.js" defer></script>
 </head>
 
 <body>
@@ -15,7 +15,85 @@
         <div id="slideshow-container"></div>
 
         <div class="overlay">
-            
+            <div class="config">
+                <fieldset>
+                    <legend>Image</legend>
+                    <fieldset>
+                        <legend>Position</legend>
+                        <input type="radio" id="image-top" value="top" name="image-position">
+                        <label for="image-top">Top</label>
+
+                        <input type="radio" id="image-bottom" value="bottom" name="image-position">
+                        <label for="image-bottom">Bottom</label>
+
+                        <input type="radio" id="image-left" value="left" name="image-position">
+                        <label for="image-left">Left</label>
+
+                        <input type="radio" id="image-right" value="right" name="image-position">
+                        <label for="image-right">Right</label>
+                    </fieldset>
+                    <br>
+
+                    <fieldset>
+                        <legend>Transition</legend>
+                        <input type="radio" id="image-fade" value="image-fade" name="image-transition">
+                        <label for="image-fade">Fade</label>
+
+                        <input type="radio" id="image-slide" value="image-slide" name="image-transition">
+                        <label for="image-bottom">Slide</label>
+
+                        <input type="radio" id="image-flip" value="image-flip" name="image-transition">
+                        <label for="image-flip">Flip</label>
+                    </fieldset>
+                    <br>
+
+                    <fieldset>
+                        <legend>Border</legend>
+                        <label for="image-border-visibility">Active</label>
+                        <input type="checkbox" id="image-border-visibility" name="image-border-visibility">
+                        <br>
+
+                        <label for="image-border-color">Color</label>
+                        <input type="text" id="image-border-color" name="image-border-color">
+                        <br>
+
+                        <label for="image-border-width">Width</label>
+                        <input type="text" id="image-border-width" name="image-border-width">
+                    </fieldset>
+                    <br>
+
+                    <fieldset>
+                        <legend>Glow</legend>
+                        <label for="image-glow-visibility">Active</label>
+                        <input type="checkbox" id="image-glow-visibility" name="image-glow-visibility">
+                        <br>
+
+                        <label for="image-glow-size">Size</label>
+                        <input type="text" id="image-glow-size" name="image-glow-size">
+                        <br>
+
+                        <label for="image-glow-opacity">Opacity</label>
+                        <input type="text" id="image-glow-opacity" name="image-glow-opacity">
+                    </fieldset>
+                    <br>
+
+                    <label for="image-radius">Rounding</label>
+                    <input type="text" id="image-radius" placeholder="Pixels">
+                    <br>
+
+                    <label for="image-duration">Duration</label>
+                    <input type="text" id="image-duration" placeholder="Seconds">
+                </fieldset>
+            </div>
+
+            <div class="config">
+                <fieldset>
+                    <legend>Caption</legend>
+                    <fieldset>
+                        <legend>Text</legend>
+                    </fieldset>
+                </fieldset>
+            </div>
         </div>
     </main>
 </body>
