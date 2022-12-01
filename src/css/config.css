@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/* @import url('https://github.kinksterfox.com/main-style.css'); */
 
 .overlay {
     display: flex;
@@ -18,14 +19,16 @@
 
 .config {
     width: fit-content;
-    margin: 20px;   
+    margin: 20px;
 }
 
 .config:not(:first-of-type) {
     margin-left: 0;
 }
 
-legend, input, label {
+legend,
+input,
+label {
     font-family: 'Open Sans', sans-serif;
     color: white;
 }
@@ -36,7 +39,7 @@ legend {
     border-radius: 10px;
 }
 
-fieldset > fieldset > legend {
+fieldset>fieldset>legend {
     padding: 0;
     margin-bottom: 4px;
     background-color: transparent;
@@ -45,7 +48,7 @@ fieldset > fieldset > legend {
 }
 
 fieldset {
-    width: fit-content;
+    width: 100%;
     padding: 16px;
     border: none;
 
@@ -53,13 +56,36 @@ fieldset {
     border-radius: 10px;
 }
 
-fieldset > fieldset {
+fieldset>fieldset {
     background-color: transparent;
     padding: 0;
 }
 
+:not(input[type="radio"]) + label {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
 input {
     color: black;
+}
+
+input[type="text"] {
+    width: 180px;
+    float: inline-end;
+
+    background-color: hsla(0, 0%, 100%, 1);
+    border-radius: 5px;
+    color: black;
+    border: none;
+    text-align: center;
+    margin-top: 2px;
+    margin-left: 20px;
+}
+
+input[type="checkbox"] {
+    float: inline-end;
 }
 
 input:not(:first-of-type) {

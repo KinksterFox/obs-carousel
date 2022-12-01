@@ -43,6 +43,7 @@ img {
 }
 
 .glow {
+    display: none;
     position: absolute;
     z-index: -255;
 }

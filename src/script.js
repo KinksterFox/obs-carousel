@@ -30,11 +30,11 @@ const config = {};
 
 function populateConfig(userconfig) {
     Object.assign(config, userconfig);
-    addFont();
+    /* addFont(); */
 }
 
 // Add Font Family
-function addFont() {
+/* function addFont() {
     const head = document.head;
     const fontSheet = document.createElement('link');
     const font = config.caption.text.fontFamily;
@@ -43,13 +43,13 @@ function addFont() {
     fontSheet.href = `https://fonts.googleapis.com/css?family=${font}`
 
     head.appendChild(fontSheet);
-}
+} */
 
 //Carousel
 function populateCarousel(obj) {
     const images = obj.images
 
-    main.classList.add(config.image.position)
+    main.classList.add(imageConfig.position);
 
     for (const image of images) {
         function isImage(url) {
@@ -58,48 +58,52 @@ function populateCarousel(obj) {
 
         if (isImage(image.file)) {
             const slide = document.createElement('div');
-            slide.classList.add('mySlides', config.image.transition);
-            slide.style.animationDuration = `${config.duration}s`
+            slide.classList.add('mySlides', imageConfig.transition);
+            slide.style.animationDuration = `${imageConfig.duration}s`
 
             const img = document.createElement('img');
             img.src = `images/${image.file}`;
-            img.style.borderRadius = config.image.borderRadius;
+            img.style.borderRadius = `${imageConfig.rounding}px`;
 
-            if (config.image.border.visibility == 'on') {
-                img.style.outline = `${config.image.border.width} solid ${config.image.border.color}`
+            if (imageConfig.border.visibility == true) {
+                img.style.outline = `${imageConfig.border.width}px solid ${imageConfig.border.color}`
             }
 
-            if (config.image.glow.visibility == 'on') {
-                const bgGlow = document.createElement('img');
-                bgGlow.src = `images/${image.file}`;
-                bgGlow.style.borderRadius = config.image.radius;
-                bgGlow.classList.add('glow');
+            const bgGlow = document.createElement('img');
+            bgGlow.src = `images/${image.file}`;
+            bgGlow.style.borderRadius = `${imageConfig.rounding}px`;
+            bgGlow.classList.add('glow');
 
-                bgGlow.style.filter = `blur(${config.image.glow.size})`;
-                bgGlow.style.opacity = config.image.glow.opacity;
+            if (imageConfig.glow.visibility == true) {
+                bgGlow.style.display = 'block';
+            };
 
-                slide.appendChild(bgGlow);
-            }
+            bgGlow.style.filter = `blur(${imageConfig.glow.size}px)`;
+            bgGlow.style.opacity = imageConfig.glow.opacity;
+
+            slide.appendChild(bgGlow);
 
             slide.appendChild(img);
 
             const capContainer = document.createElement('div');
-            capContainer.classList.add('caption-container', 'text-padding', config.caption.text.position);
-            capContainer.style.opacity = config.caption.text.opacity;
+            capContainer.classList.add('caption-container', 'text-padding', captionConfig.text.position);
+            capContainer.style.opacity = captionConfig.text.opacity;
 
             slide.appendChild(capContainer);
 
             const caption = document.createElement('p');
-            caption.classList.add('caption', config.caption.text.transition);
+            caption.classList.add('caption', captionConfig.text.transition);
             caption.textContent = image.caption;
-            caption.style.color = config.caption.text.color;
-            caption.style.fontFamily = config.caption.text.fontFamily;
-            caption.style.fontSize = config.caption.text.fontSize;
-            caption.style.fontWeight = config.caption.text.fontWeight;
-            caption.style.animationDuration = `${config.duration}s`;
+            caption.style.color = captionConfig.text.color;
+            caption.style.fontFamily = captionConfig.text.fontFamily;
+            caption.style.fontSize = `${captionConfig.text.fontSize}px`;
+            caption.style.fontWeight = captionConfig.text.fontWeight;
+            caption.style.animationDuration = `${imageConfig.duration}s`;
 
-            if (config.caption.shadow.visibility == 'on') {
-                caption.style.textShadow = `${config.caption.shadow.offset} ${config.caption.shadow.offset} ${config.caption.shadow.size} ${config.caption.shadow.color}`
+            if (captionConfig.shadow.visibility == true) {
+                caption.style.textShadow = `${captionConfig.shadow.offset}px ${captionConfig.shadow.offset}px ${captionConfig.shadow.size}px ${captionConfig.shadow.color}`;
+            } else {
+                caption.style.textShadow = 'none';
             }
 
             capContainer.appendChild(caption);
@@ -126,7 +130,7 @@ function showSlides() {
 
     slides[slideIndex - 1].style.display = 'block';
 
-    setTimeout(showSlides, config.duration * 1000);
+    setTimeout(showSlides, imageConfig.duration * 1000);
 }
 
 window.addEventListener('load', () => {

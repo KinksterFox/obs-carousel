@@ -6,8 +6,9 @@
     <title>KinksterFox Stream Carousel</title>
 
     <link rel="stylesheet" href="src/style.css">
-    <script src="src/script.js" defer></script>
+
     <script src="src/config.js" defer></script>
+    <script src="src/script.js" defer></script>
 </head>
 
 <body>
@@ -40,10 +41,10 @@
                         <label for="image-fade">Fade</label>
 
                         <input type="radio" id="image-slide" value="image-slide" name="image-transition">
-                        <label for="image-bottom">Slide</label>
+                        <label for="image-slide">Slide</label>
 
-                        <input type="radio" id="image-flip" value="image-flip" name="image-transition">
-                        <label for="image-flip">Flip</label>
+                        <!-- <input type="radio" id="image-flip" value="image-flip" name="image-transition">
+                        <label for="image-flip">Flip</label> -->
                     </fieldset>
                     <br>
 
@@ -54,11 +55,12 @@
                         <br>
 
                         <label for="image-border-color">Color</label>
-                        <input type="text" id="image-border-color" name="image-border-color">
+                        <input type="text" id="image-border-color" name="image-border-color"
+                            placeholder="ColorName or #Hexcode">
                         <br>
 
                         <label for="image-border-width">Width</label>
-                        <input type="text" id="image-border-width" name="image-border-width">
+                        <input type="text" id="image-border-width" name="image-border-width" placeholder="Pixels">
                     </fieldset>
                     <br>
 
@@ -69,11 +71,11 @@
                         <br>
 
                         <label for="image-glow-size">Size</label>
-                        <input type="text" id="image-glow-size" name="image-glow-size">
+                        <input type="text" id="image-glow-size" name="image-glow-size" placeholder="Pixels">
                         <br>
 
                         <label for="image-glow-opacity">Opacity</label>
-                        <input type="text" id="image-glow-opacity" name="image-glow-opacity">
+                        <input type="text" id="image-glow-opacity" name="image-glow-opacity" placeholder="Percent">
                     </fieldset>
                     <br>
 
@@ -90,7 +92,64 @@
                 <fieldset>
                     <legend>Caption</legend>
                     <fieldset>
-                        <legend>Text</legend>
+                        <legend>Position</legend>
+                        <input type="radio" id="caption-top" value="top" name="caption-position">
+                        <label for="caption-top">Top</label>
+
+                        <input type="radio" id="caption-bottom" value="bottom" name="caption-position">
+                        <label for="caption-bottom">Bottom</label>
+                    </fieldset>
+                    <br>
+
+                    <fieldset>
+                        <legend>Transition</legend>
+                        <input type="radio" id="text-fade" value="text-fade" name="text-transition">
+                        <label for="text-fade">Fade</label>
+
+                        <input type="radio" id="text-slide" value="text-slide" name="text-transition">
+                        <label for="text-slide">Slide</label>
+
+                        <!-- <input type="radio" id="image-flip" value="image-flip" name="image-transition">
+                            <label for="image-flip">Flip</label> -->
+                    </fieldset>
+                    <br>
+
+                    <label for="font-family">Font Family</label>
+                    <input type="text" id="font-family" name="font-family" placeholder="Font Name">
+                    <br>
+
+                    <label for="font-size">Size</label>
+                    <input type="text" id="font-size" name="font-size" placeholder="Pixels">
+                    <br>
+
+                    <label for="font-weight">Weight</label>
+                    <input type="text" id="font-weight" name="font-weight" placeholder="Light, Normal, Bold">
+                    <br>
+
+                    <label for="font-color">Color</label>
+                    <input type="text" id="font-color" name="font-color" placeholder="ColorName or #Hexcode">
+                    <br>
+
+                    <label for="font-opacity">Opacity</label>
+                    <input type="text" id="font-opacity" name="font-opacity" placeholder="Percent">
+                    <br><br>
+
+                    <fieldset>
+                        <legend>Shadow</legend>
+                        <label for="text-shadow-visibility">Active</label>
+                        <input type="checkbox" id="text-shadow-visibility" name="text-shadow-visibility">
+                        <br>
+
+                        <label for="text-shadow-color">Color</label>
+                        <input type="text" id="text-shadow-color" name="text-shadow-color" placeholder="ColorName or #Hexcode">
+                        <br>
+
+                        <label for="text-shadow-offset">Offset</label>
+                        <input type="text" id="text-shadow-offset" name="text-shadow-offset" placeholder="Pixels">
+                        <br>
+
+                        <label for="text-shadow-size">Size</label>
+                        <input type="text" id="text-shadow-size" name="text-shadow-size" placeholder="Pixels">
                     </fieldset>
                 </fieldset>
             </div>
