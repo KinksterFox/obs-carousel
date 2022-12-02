@@ -1,7 +1,7 @@
 /* Image Fade */
 .image-fade {
     opacity: 0;
-    animation-delay: 0.5s;
+    animation-delay: 0.1s;
     animation: image-fade ease-in-out forwards;
 }
 
@@ -25,7 +25,7 @@
 
 /* Image Slide */
 .image-slide {
-    animation-delay: 0.5s;
+    animation-delay: 0.1s;
     animation: image-slide ease-in-out forwards;
 }
 
@@ -66,7 +66,7 @@
 /* Image Flip*/
 .image-flip {
     transform: rotate3d(0, 1, 0, 90deg);
-    animation-delay: 0.5s;
+    animation-delay: 0.1s;
     animation: image-flip ease-in-out forwards;
 }
 
@@ -91,7 +91,6 @@
 /* Image Fade */
 .text-fade {
     opacity: 0;
-    animation-delay: 0.5s;
     animation: text-fade ease-in-out forwards;
 }
 
@@ -115,33 +114,29 @@
 
 /* Text Slide */
 .text-slide {
-    position: absolute;
-    width: 100%;
-    left: 100%;
-    text-align: center;
-    opacity: 0;
-    animation-delay: 0.5s;
+    opacity: 0%;
+    transform: translate(150%, 0%);
     animation: text-slide ease-in-out forwards;
 }
 
 @keyframes text-slide {
     0% {
-        opacity: 0;
-        left: 100%;
+        opacity: 0%;
+        transform: translate(200%, 0%);
     }
 
     25% {
-        opacity: 1;
-        left: 5%;
+        opacity: 100%;
+        transform: translate(5%, 0%);
     }
 
     75% {
-        opacity: 1;
-        left: -5%;
+        opacity: 100%;
+        transform: translate(-5%, 0%);
     }
 
     100% {
-        opacity: 0;
-        left: -100%;
+        opacity: 0%;
+        transform: translate(-200%, 0%);
     }
 }
