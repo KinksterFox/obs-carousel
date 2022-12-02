@@ -1,18 +1,6 @@
 // DOM Initialization
 const main = document.getElementById('main-container');
-const carousal = document.getElementById('slideshow-container');
-
-// Fetch JSON
-async function initializeConfig() {
-    const requestUserConfig = './userconfig.json';
-    const request = new Request(requestUserConfig);
-
-    const response = await fetch(request);
-    const userconfig = await response.json();
-
-    populateConfig(userconfig);
-}
-initializeConfig();
+const carousel = document.getElementById('carousel-container');
 
 async function initializeImages() {
     const requestImages = './images.json';
@@ -24,26 +12,6 @@ async function initializeImages() {
     populateCarousel(images);
 }
 initializeImages();
-
-// Config
-const config = {};
-
-function populateConfig(userconfig) {
-    Object.assign(config, userconfig);
-    /* addFont(); */
-}
-
-// Add Font Family
-/* function addFont() {
-    const head = document.head;
-    const fontSheet = document.createElement('link');
-    const font = config.caption.text.fontFamily;
-
-    fontSheet.rel = 'stylesheet';
-    fontSheet.href = `https://fonts.googleapis.com/css?family=${font}`
-
-    head.appendChild(fontSheet);
-} */
 
 //Carousel
 function populateCarousel(obj) {
@@ -108,7 +76,7 @@ function populateCarousel(obj) {
 
             capContainer.appendChild(caption);
 
-            carousal.appendChild(slide);
+            carousel.appendChild(slide);
         }
     }
     showSlides();

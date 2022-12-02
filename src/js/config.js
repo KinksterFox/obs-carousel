@@ -115,10 +115,12 @@ imageBorderVisibility.addEventListener('click', () => {
 
 const imageBorderColor = document.getElementById('image-border-color');
 imageBorderColor.value = imageConfig.border.color;
+imageBorderColor.style.outline = `3px solid ${imageConfig.border.color}`
 
 imageBorderColor.addEventListener('keypress', e => {
     if (e.key === 'Enter') {
         imageConfig.border.color = imageBorderColor.value;
+        imageBorderColor.style.outline = `3px solid ${imageConfig.border.color}`
 
         if (imageBorderVisibility.checked == true) {
             document.querySelectorAll('img:last-of-type').forEach((i) => {
@@ -324,11 +326,13 @@ fontWeight.addEventListener('keypress', e => {
 
 const fontColor = document.getElementById('font-color');
 fontColor.value = captionConfig.text.color;
+fontColor.style.outline = `3px solid ${captionConfig.text.color}`
 
 fontColor.addEventListener('keypress', e => {
     if (e.key === 'Enter') {
         captionConfig.text.color = fontColor.value;
         fontColor.value = captionConfig.text.color;
+        fontColor.style.outline = `3px solid ${captionConfig.text.color}`
 
         document.querySelectorAll('.caption').forEach((c) => {
             c.style.color = captionConfig.text.color;
@@ -374,12 +378,14 @@ ShadowVisibility.addEventListener('click', () => {
 
 const shadowColor = document.getElementById('text-shadow-color');
 shadowColor.value = captionConfig.shadow.color;
+shadowColor.style.outline = `3px solid ${captionConfig.shadow.color}`
 
 
 shadowColor.addEventListener('keypress', e => {
     if (e.key === 'Enter') {
         captionConfig.shadow.color = shadowColor.value;
         shadowColor.value = captionConfig.shadow.color;
+        shadowColor.style.outline = `3px solid ${captionConfig.shadow.color}`
 
         if (ShadowVisibility.checked == true) {
             document.querySelectorAll('.caption').forEach((c) => {

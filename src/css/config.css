@@ -11,11 +11,17 @@
 
     opacity: 1;
     transition-duration: 200ms;
+
+    justify-content: center;
 }
 
-/* .overlay:hover {
+.overlay:hover {
     opacity: 1;
-} */
+}
+
+.overlay:hover>body {
+    background-color: gray;
+}
 
 .config {
     width: fit-content;
@@ -61,10 +67,63 @@ fieldset>fieldset {
     padding: 0;
 }
 
-:not(input[type="radio"]) + label {
-    font-size: 0.8rem;
-    margin-bottom: 4px;
-    display: inline-block;
+.positioning {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    margin-top: 6px;
+}
+
+.positioning input {
+    margin: 0 !important;
+}
+
+#image-top-left {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#image-top-center {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#image-top-right {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+#image-left {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#image-center {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#image-right {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+#image-bottom-left {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+#image-bottom-center {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+#image-bottom-right {
+    grid-column: 3;
+    grid-row: 3;
 }
 
 input {
@@ -90,6 +149,11 @@ input[type="checkbox"] {
 
 input:not(:first-of-type) {
     margin-left: 6px;
+}
+
+input:focus {
+    outline: none;
+    background-color: hsl(0, 0%, 80%);
 }
 
 label:last-of-type {

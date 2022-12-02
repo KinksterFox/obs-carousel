@@ -1,4 +1,4 @@
-@import "css/positions.css"; @import "css/animations.css"; @import "css/config.css";
+@import "positions.css"; @import "animations.css"; @import "config.css";
 
 * {
     -webkit-user-select: none;
@@ -10,6 +10,7 @@
 }
 
 body {
+    overflow: hidden;
     background-color: transparent;
     padding: 0;
     margin: 0;
@@ -23,10 +24,11 @@ main {
 
     width: 100%;
     height: 100%;
+    padding: 50px;
 }
 
 /* Slideshow container */
-#slideshow-container {
+#carousel-container {
     position: relative;
 }
 

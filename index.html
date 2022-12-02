@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <title>KinksterFox Stream Carousel</title>
 
-    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/css/main-style.css">
 
-    <script src="src/config.js" defer></script>
-    <script src="src/script.js" defer></script>
+    <script src="src/js/config.js" defer></script>
+    <script src="src/js/script.js" defer></script>
 </head>
 
 <body>
     <main id="main-container">
-        <div id="slideshow-container"></div>
+        <div id="carousel-container"></div>
 
         <div class="overlay">
             <div class="config">
@@ -21,17 +21,25 @@
                     <legend>Image</legend>
                     <fieldset>
                         <legend>Position</legend>
-                        <input type="radio" id="image-top" value="top" name="image-position">
-                        <label for="image-top">Top</label>
+                        <div class="positioning">
+                            <input type="radio" id="image-top-left" value="top-left" name="image-position">
 
-                        <input type="radio" id="image-bottom" value="bottom" name="image-position">
-                        <label for="image-bottom">Bottom</label>
+                            <input type="radio" id="image-top-center" value="top" name="image-position">
 
-                        <input type="radio" id="image-left" value="left" name="image-position">
-                        <label for="image-left">Left</label>
+                            <input type="radio" id="image-top-right" value="top-right" name="image-position">
 
-                        <input type="radio" id="image-right" value="right" name="image-position">
-                        <label for="image-right">Right</label>
+                            <input type="radio" id="image-left" value="left" name="image-position">
+
+                            <input type="radio" id="image-center" value="center" name="image-position">
+
+                            <input type="radio" id="image-right" value="right" name="image-position">
+
+                            <input type="radio" id="image-bottom-right" value="bottom-right" name="image-position">
+
+                            <input type="radio" id="image-bottom-center" value="bottom" name="image-position">
+
+                            <input type="radio" id="image-bottom-left" value="bottom-left" name="image-position">
+                        </div>
                     </fieldset>
                     <br>
 
@@ -43,8 +51,8 @@
                         <input type="radio" id="image-slide" value="image-slide" name="image-transition">
                         <label for="image-slide">Slide</label>
 
-                        <!-- <input type="radio" id="image-flip" value="image-flip" name="image-transition">
-                        <label for="image-flip">Flip</label> -->
+                        <input type="radio" id="image-flip" value="image-flip" name="image-transition">
+                        <label for="image-flip">Flip</label>
                     </fieldset>
                     <br>
 
@@ -108,9 +116,6 @@
 
                         <input type="radio" id="text-slide" value="text-slide" name="text-transition">
                         <label for="text-slide">Slide</label>
-
-                        <!-- <input type="radio" id="image-flip" value="image-flip" name="image-transition">
-                            <label for="image-flip">Flip</label> -->
                     </fieldset>
                     <br>
 
@@ -141,7 +146,8 @@
                         <br>
 
                         <label for="text-shadow-color">Color</label>
-                        <input type="text" id="text-shadow-color" name="text-shadow-color" placeholder="ColorName or #Hexcode">
+                        <input type="text" id="text-shadow-color" name="text-shadow-color"
+                            placeholder="ColorName or #Hexcode">
                         <br>
 
                         <label for="text-shadow-offset">Offset</label>
