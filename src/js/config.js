@@ -186,20 +186,18 @@ imageGlowSize.addEventListener('keypress', e => {
 });
 
 const imageGlowOpacity = document.getElementById('image-glow-opacity');
-imageGlowOpacity.value = imageConfig.glow.opacity * 100 + '%';
+imageGlowOpacity.value = imageConfig.glow.opacity;
 
-imageGlowOpacity.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        if (imageGlowVisibility.checked == true) {
-            imageConfig.glow.opacity = parseFloat(imageGlowOpacity.value / 100);
-            imageGlowOpacity.value = imageConfig.glow.opacity * 100 + '%';
+imageGlowOpacity.addEventListener('input', e => {
+    if (imageGlowVisibility.checked == true) {
+        imageConfig.glow.opacity = imageGlowOpacity.value;
+        imageGlowOpacity.value = imageConfig.glow.opacity;
 
-            document.querySelectorAll('.glow').forEach((i) => {
-                i.style.opacity = `${imageConfig.glow.opacity}`;
-            });
-        }
-        setStorage();
+        document.querySelectorAll('.glow').forEach((i) => {
+            i.style.opacity = imageConfig.glow.opacity;
+        });
     }
+    setStorage();
 });
 
 const imageRounding = document.getElementById('image-radius');
@@ -342,18 +340,16 @@ fontColor.addEventListener('keypress', e => {
 });
 
 const fontOpacity = document.getElementById('font-opacity');
-fontOpacity.value = captionConfig.text.opacity * 100 + '%';
+fontOpacity.value = captionConfig.text.opacity;
 
-fontOpacity.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        captionConfig.text.opacity = parseFloat(fontOpacity.value / 100);
-        fontOpacity.value = captionConfig.text.opacity * 100 + '%';;
+fontOpacity.addEventListener('input', e => {
+    captionConfig.text.opacity = fontOpacity.value;
+    fontOpacity.value = captionConfig.text.opacity;
 
-        document.querySelectorAll('.caption-container').forEach((c) => {
-            c.style.opacity = captionConfig.text.opacity;
-        });
-        setStorage();
-    }
+    document.querySelectorAll('.caption-container').forEach((c) => {
+        c.style.opacity = captionConfig.text.opacity;
+    });
+    setStorage();
 });
 
 const ShadowVisibility = document.getElementById('text-shadow-visibility');
@@ -429,3 +425,32 @@ shadowSize.addEventListener('keypress', e => {
         setStorage();
     };
 });
+
+const allRanges = document.querySelectorAll('.range-wrap');
+allRanges.forEach(wrap => {
+    const range = wrap.querySelector('input');
+    const bubble = wrap.querySelector('.bubble');
+
+    range.addEventListener('mouseover', () => {
+        bubble.style.opacity = 1;
+    });
+
+    range.addEventListener('mouseout', () => {
+        bubble.style.opacity = 0;
+    });
+
+    range.addEventListener('input', () => {
+        setBubble(range, bubble);
+    });
+    setBubble(range, bubble);
+});
+
+function setBubble(range, bubble) {
+    const val = range.value;
+    const min = range.min ? range.min : 0;
+    const max = range.max ? range.max : 100;
+    const newVal = Number(((val - min) * 100) / (max - min));
+    bubble.innerHTML = Math.round(val * 100);
+
+    bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+}

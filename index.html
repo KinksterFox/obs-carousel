@@ -83,7 +83,11 @@
                         <br>
 
                         <label for="image-glow-opacity">Opacity</label>
-                        <input type="text" id="image-glow-opacity" name="image-glow-opacity" placeholder="Percent">
+                        <div class="range-wrap">
+                            <input type="range" min="0" max="1" step="0.01" id="image-glow-opacity" name="image-glow-opacity">
+                            <output class="bubble"></output>
+                        </div>
+
                     </fieldset>
                     <br>
 
@@ -136,7 +140,10 @@
                     <br>
 
                     <label for="font-opacity">Opacity</label>
-                    <input type="text" id="font-opacity" name="font-opacity" placeholder="Percent">
+                    <div class="range-wrap">
+                        <input type="range" min="0" max="1" step="0.01" id="font-opacity" name="font-opacity">
+                        <output class="bubble"></output>
+                    </div>
                     <br><br>
 
                     <fieldset>
