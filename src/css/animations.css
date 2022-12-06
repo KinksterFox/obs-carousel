@@ -88,7 +88,32 @@
     }
 }
 
-/* Image Fade */
+/* Image Grow*/
+.image-grow {
+    transform: scale(0);
+    animation-delay: 0.1s;
+    animation: image-flip ease-in-out forwards;
+}
+
+@keyframes image-flip {
+    0% {
+        transform: scale(0);
+    }
+
+    10% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+/* Text Fade */
 .text-fade {
     opacity: 0;
     animation: text-fade ease-in-out forwards;

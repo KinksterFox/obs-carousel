@@ -2,6 +2,9 @@
 let imageConfig = {
     position: "left",
     transition: "image-fade",
+    size: 480,
+    rounding: 10,
+    duration: 10,
     border: {
         visibility: false,
         color: "White",
@@ -11,9 +14,7 @@ let imageConfig = {
         visibility: true,
         size: 35,
         opacity: 0.75
-    },
-    rounding: 10,
-    duration: 10
+    }
 };
 
 let captionConfig = {
@@ -86,6 +87,19 @@ imageTransition.addEventListener('input', e => {
     document.querySelectorAll('.mySlides').forEach((s) => {
         s.classList.add(imageConfig.transition);
     })
+    setStorage();
+});
+
+const imageSize = document.getElementById('image-size');
+imageSize.value = imageConfig.size;
+
+imageSize.addEventListener('input', e => {
+    imageConfig.size = imageSize.value;
+    imageSize.value = imageConfig.size;
+
+    document.querySelectorAll('img').forEach((i) => {
+        i.style.maxHeight = `${imageConfig.size}px`;
+    });
     setStorage();
 });
 
@@ -242,24 +256,20 @@ captionPositionRadios.forEach((e) => {
     });
 });
 
-const textTransitionRadios = document.querySelectorAll('input[name="text-transition"]');
-textTransitionRadios.forEach((e) => {
-    if (e.value == captionConfig.text.transition) {
-        e.checked = true;
-    };
+const textTransition = document.getElementById('text-transition');
+textTransition.value = captionConfig.text.transition;
 
-    e.addEventListener('click', () => {
-        document.querySelectorAll('.caption').forEach((c) => {
-            c.classList.remove(captionConfig.text.transition);
-        });
+textTransition.addEventListener('input', e => {
+    document.querySelectorAll('.caption').forEach((s) => {
+        s.classList.remove(captionConfig.text.transition);
+    })
 
-        captionConfig.text.transition = e.value;
+    captionConfig.text.transition = textTransition.value;
 
-        document.querySelectorAll('.caption').forEach((c) => {
-            c.classList.add(captionConfig.text.transition);
-        });
-        setStorage();
-    });
+    document.querySelectorAll('.caption').forEach((s) => {
+        s.classList.add(captionConfig.text.transition);
+    })
+    setStorage();
 });
 
 const fontFamily = document.getElementById('font-family');

@@ -40,8 +40,9 @@ main {
 /* Image */
 img {
     height: 100%;
-    max-height: 480px;
+    max-height: 600px;
     background-size: contain;
+    image-rendering: crisp-edges;
 }
 
 .glow {

@@ -48,7 +48,16 @@
                             <option value="image-fade">Fade</option>
                             <option value="image-slide">Slide</option>
                             <option value="image-flip">Flip</option>
+                            <option value="image-grow">Grow</option>
                         </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="image-size">Size</label>
+                        <div class="range-wrap">
+                            <input type="range" min="200" max="800" step="10" id="image-size" name="image-size">
+                            <output class="bubble px"></output>
+                        </div>
                     </div>
 
                     <div class="field">
@@ -130,14 +139,13 @@
                         <label for="caption-bottom">Bottom</label>
                     </fieldset>
 
-                    <fieldset>
-                        <legend>Transition</legend>
-                        <input type="radio" id="text-fade" value="text-fade" name="text-transition">
-                        <label for="text-fade">Fade</label>
-
-                        <input type="radio" id="text-slide" value="text-slide" name="text-transition">
-                        <label for="text-slide">Slide</label>
-                    </fieldset>
+                    <div class="field">
+                        <label for="text-transition">Transition</label>
+                        <select id="text-transition" name="text-transition">
+                            <option value="text-fade">Fade</option>
+                            <option value="text-slide">Slide</option>
+                        </select>
+                    </div>
 
                     <div class="field">
                         <label for="font-family">Font Family</label>
