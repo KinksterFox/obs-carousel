@@ -41,62 +41,80 @@
                             <input type="radio" id="image-bottom-right" value="bottom-right" name="image-position">
                         </div>
                     </fieldset>
-                    <br>
 
-                    <fieldset>
-                        <legend>Transition</legend>
-                        <input type="radio" id="image-fade" value="image-fade" name="image-transition">
-                        <label for="image-fade">Fade</label>
+                    <div class="field">
+                        <label for="image-transition">Transition</label>
+                        <select id="image-transition" name="image-transition">
+                            <option value="image-fade">Fade</option>
+                            <option value="image-slide">Slide</option>
+                            <option value="image-flip">Flip</option>
+                        </select>
+                    </div>
 
-                        <input type="radio" id="image-slide" value="image-slide" name="image-transition">
-                        <label for="image-slide">Slide</label>
+                    <div class="field">
+                        <label for="image-radius">Rounding</label>
+                        <div class="range-wrap">
+                            <input type="range" min="0" max="50" step="1" id="image-radius" name="image-radius">
+                            <output class="bubble px"></output>
+                        </div>
+                    </div>
 
-                        <input type="radio" id="image-flip" value="image-flip" name="image-transition">
-                        <label for="image-flip">Flip</label>
-                    </fieldset>
-                    <br>
+                    <div class="field">
+                        <label for="image-duration">Duration</label>
+                        <input type="text" id="image-duration" placeholder="Seconds">
+                    </div>
 
                     <fieldset>
                         <legend>Border</legend>
-                        <label for="image-border-visibility">Active</label>
-                        <input type="checkbox" id="image-border-visibility" name="image-border-visibility">
-                        <br>
+                        <div class="field">
+                            <label for="image-border-visibility">Active</label>
+                            <input type="checkbox" id="image-border-visibility" name="image-border-visibility">
+                        </div>
 
-                        <label for="image-border-color">Color</label>
-                        <input type="text" id="image-border-color" name="image-border-color"
-                            placeholder="ColorName or #Hexcode">
-                        <br>
+                        <div class="field">
+                            <label for="image-border-color">Color</label>
+                            <div class="color-wrap">
+                                <div id="image-border-color-box" class="colorbox"></div>
+                                <input type="text" id="image-border-color" name="image-border-color"
+                                    placeholder="ColorName or #Hexcode">
+                            </div>
+                        </div>
 
-                        <label for="image-border-width">Width</label>
-                        <input type="text" id="image-border-width" name="image-border-width" placeholder="Pixels">
+                        <div class="field">
+                            <label for="image-border-width">Width</label>
+                            <div class="range-wrap">
+                                <input type="range" min="0" max="25" step="1" id="image-border-width"
+                                    name="image-border-width">
+                                <output class="bubble px"></output>
+                            </div>
+                        </div>
                     </fieldset>
-                    <br>
 
                     <fieldset>
                         <legend>Glow</legend>
-                        <label for="image-glow-visibility">Active</label>
-                        <input type="checkbox" id="image-glow-visibility" name="image-glow-visibility">
-                        <br>
-
-                        <label for="image-glow-size">Size</label>
-                        <input type="text" id="image-glow-size" name="image-glow-size" placeholder="Pixels">
-                        <br>
-
-                        <label for="image-glow-opacity">Opacity</label>
-                        <div class="range-wrap">
-                            <input type="range" min="0" max="1" step="0.01" id="image-glow-opacity" name="image-glow-opacity">
-                            <output class="bubble"></output>
+                        <div class="field">
+                            <label for="image-glow-visibility">Active</label>
+                            <input type="checkbox" id="image-glow-visibility" name="image-glow-visibility">
                         </div>
 
+                        <div class="field">
+                            <label for="image-glow-size">Size</label>
+                            <div class="range-wrap">
+                                <input type="range" min="0" max="50" step="1" id="image-glow-size"
+                                    name="image-glow-size">
+                                <output class="bubble px"></output>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="image-glow-opacity">Opacity</label>
+                            <div class="range-wrap">
+                                <input type="range" min="0" max="1" step="0.01" id="image-glow-opacity"
+                                    name="image-glow-opacity">
+                                <output class="bubble percent"></output>
+                            </div>
+                        </div>
                     </fieldset>
-                    <br>
-
-                    <label for="image-radius">Rounding</label>
-                    <input type="text" id="image-radius" placeholder="Pixels">
-                    <br>
-
-                    <label for="image-duration">Duration</label>
-                    <input type="text" id="image-duration" placeholder="Seconds">
                 </fieldset>
             </div>
 
@@ -111,7 +129,6 @@
                         <input type="radio" id="caption-bottom" value="bottom" name="caption-position">
                         <label for="caption-bottom">Bottom</label>
                     </fieldset>
-                    <br>
 
                     <fieldset>
                         <legend>Transition</legend>
@@ -121,48 +138,83 @@
                         <input type="radio" id="text-slide" value="text-slide" name="text-transition">
                         <label for="text-slide">Slide</label>
                     </fieldset>
-                    <br>
 
-                    <label for="font-family">Font Family</label>
-                    <input type="text" id="font-family" name="font-family" placeholder="Font Name">
-                    <br>
-
-                    <label for="font-size">Size</label>
-                    <input type="text" id="font-size" name="font-size" placeholder="Pixels">
-                    <br>
-
-                    <label for="font-weight">Weight</label>
-                    <input type="text" id="font-weight" name="font-weight" placeholder="Light, Normal, Bold">
-                    <br>
-
-                    <label for="font-color">Color</label>
-                    <input type="text" id="font-color" name="font-color" placeholder="ColorName or #Hexcode">
-                    <br>
-
-                    <label for="font-opacity">Opacity</label>
-                    <div class="range-wrap">
-                        <input type="range" min="0" max="1" step="0.01" id="font-opacity" name="font-opacity">
-                        <output class="bubble"></output>
+                    <div class="field">
+                        <label for="font-family">Font Family</label>
+                        <input type="text" id="font-family" name="font-family" placeholder="Font Name">
                     </div>
-                    <br><br>
+
+                    <div class="field">
+                        <label for="font-size">Size</label>
+                        <div class="range-wrap">
+                            <input type="range" min="0" max="72" step="1" id="font-size" name="font-size">
+                            <output class="bubble px"></output>
+                        </div>
+                    </div>
+
+                    <!-- <div class="field">
+                        <label for="font-weight">Weight</label>
+                        <input type="text" id="font-weight" name="font-weight" placeholder="Light, Normal, Bold">
+                    </div> -->
+
+                    <div class="field">
+                        <label for="font-weight">Weight</label>
+                        <select id="font-weight" name="font-weight">
+                            <option value="lighter">Light</option>
+                            <option value="normal">Normal</option>
+                            <option value="bold">Bold</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="font-color">Color</label>
+                        <div class="color-wrap">
+                            <div id="font-color-box" class="colorbox"></div>
+                            <input type="text" id="font-color" name="font-color" placeholder="ColorName or #Hexcode">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="font-opacity">Opacity</label>
+                        <div class="range-wrap">
+                            <input type="range" min="0" max="1" step="0.01" id="font-opacity" name="font-opacity">
+                            <output class="bubble percent"></output>
+                        </div>
+                    </div>
 
                     <fieldset>
                         <legend>Shadow</legend>
-                        <label for="text-shadow-visibility">Active</label>
-                        <input type="checkbox" id="text-shadow-visibility" name="text-shadow-visibility">
-                        <br>
+                        <div class="field">
+                            <label for="text-shadow-visibility">Active</label>
+                            <input type="checkbox" id="text-shadow-visibility" name="text-shadow-visibility">
+                        </div>
 
-                        <label for="text-shadow-color">Color</label>
-                        <input type="text" id="text-shadow-color" name="text-shadow-color"
-                            placeholder="ColorName or #Hexcode">
-                        <br>
+                        <div class="field">
+                            <label for="text-shadow-color">Color</label>
+                            <div class="color-wrap">
+                                <div id="text-shadow-color-box" class="colorbox"></div>
+                                <input type="text" id="text-shadow-color" name="text-shadow-color"
+                                    placeholder="ColorName or #Hexcode">
+                            </div>
+                        </div>
 
-                        <label for="text-shadow-offset">Offset</label>
-                        <input type="text" id="text-shadow-offset" name="text-shadow-offset" placeholder="Pixels">
-                        <br>
+                        <div class="field">
+                            <label for="text-shadow-offset">Offset</label>
+                            <div class="range-wrap">
+                                <input type="range" min="0" max="12" step="1" id="text-shadow-offset"
+                                    name="text-shadow-offset">
+                                <output class="bubble px"></output>
+                            </div>
+                        </div>
 
-                        <label for="text-shadow-size">Size</label>
-                        <input type="text" id="text-shadow-size" name="text-shadow-size" placeholder="Pixels">
+                        <div class="field">
+                            <label for="text-shadow-size">Size</label>
+                            <div class="range-wrap">
+                                <input type="range" min="0" max="16" step="1" id="text-shadow-size"
+                                    name="text-shadow-size">
+                                <output class="bubble px"></output>
+                            </div>
+                        </div>
                     </fieldset>
                 </fieldset>
             </div>

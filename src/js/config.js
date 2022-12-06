@@ -73,24 +73,48 @@ imagePositionRadios.forEach((e) => {
     });
 });
 
-const imageTransitionRadios = document.querySelectorAll('input[name="image-transition"]');
-imageTransitionRadios.forEach((e) => {
-    if (e.value == imageConfig.transition) {
-        e.checked = true;
-    };
+const imageTransition = document.getElementById('image-transition');
+imageTransition.value = imageConfig.transition;
 
-    e.addEventListener('click', () => {
-        document.querySelectorAll('.mySlides').forEach((s) => {
-            s.classList.remove(imageConfig.transition);
-        })
+imageTransition.addEventListener('input', e => {
+    document.querySelectorAll('.mySlides').forEach((s) => {
+        s.classList.remove(imageConfig.transition);
+    })
 
-        imageConfig.transition = e.value;
+    imageConfig.transition = imageTransition.value;
 
-        document.querySelectorAll('.mySlides').forEach((s) => {
-            s.classList.add(imageConfig.transition);
-        })
-        setStorage();
+    document.querySelectorAll('.mySlides').forEach((s) => {
+        s.classList.add(imageConfig.transition);
+    })
+    setStorage();
+});
+
+const imageRounding = document.getElementById('image-radius');
+imageRounding.value = imageConfig.rounding;
+
+imageRounding.addEventListener('input', e => {
+    imageConfig.rounding = imageRounding.value;
+    imageRounding.value = imageConfig.rounding;
+
+    document.querySelectorAll('img').forEach((i) => {
+        i.style.borderRadius = `${imageConfig.rounding}px`;
     });
+    setStorage();
+});
+
+const imageDuration = document.getElementById('image-duration');
+imageDuration.value = imageConfig.duration + 's';
+
+imageDuration.addEventListener('keypress', e => {
+    if (e.key === 'Enter') {
+        imageConfig.duration = parseFloat(imageDuration.value);
+        imageDuration.value = imageConfig.duration + 's';
+
+        document.querySelectorAll('.mySlides').forEach((i) => {
+            i.style.animationDuration = `${imageConfig.duration}s`
+        });
+        setStorage();
+    }
 });
 
 const imageBorderVisibility = document.getElementById('image-border-visibility');
@@ -114,13 +138,14 @@ imageBorderVisibility.addEventListener('click', () => {
 });
 
 const imageBorderColor = document.getElementById('image-border-color');
+const imageBorderColorBox = document.getElementById('image-border-color-box');
 imageBorderColor.value = imageConfig.border.color;
-imageBorderColor.style.outline = `3px solid ${imageConfig.border.color}`
+imageBorderColorBox.style.backgroundColor = imageConfig.border.color;
 
 imageBorderColor.addEventListener('keypress', e => {
     if (e.key === 'Enter') {
         imageConfig.border.color = imageBorderColor.value;
-        imageBorderColor.style.outline = `3px solid ${imageConfig.border.color}`
+        imageBorderColorBox.style.backgroundColor = imageConfig.border.color;
 
         if (imageBorderVisibility.checked == true) {
             document.querySelectorAll('img:last-of-type').forEach((i) => {
@@ -132,20 +157,18 @@ imageBorderColor.addEventListener('keypress', e => {
 });
 
 const imageBorderWidth = document.getElementById('image-border-width');
-imageBorderWidth.value = imageConfig.border.width + 'px';
+imageBorderWidth.value = imageConfig.border.width;
 
-imageBorderWidth.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        if (imageBorderVisibility.checked == true) {
-            imageConfig.border.width = parseInt(imageBorderWidth.value);
-            imageBorderWidth.value = imageConfig.border.width + 'px';
+imageBorderWidth.addEventListener('input', e => {
+    imageConfig.border.width = parseInt(imageBorderWidth.value);
+    imageBorderWidth.value = imageConfig.border.width;
 
-            document.querySelectorAll('img:last-of-type').forEach((i) => {
-                i.style.outline = `${imageConfig.border.width}px solid ${imageConfig.border.color}`
-            });
-        }
-        setStorage();
-    }
+    if (imageBorderVisibility.checked == true) {
+        document.querySelectorAll('img:last-of-type').forEach((i) => {
+            i.style.outline = `${imageConfig.border.width}px solid ${imageConfig.border.color}`
+        });
+    };
+    setStorage();
 });
 
 const imageGlowVisibility = document.getElementById('image-glow-visibility');
@@ -169,65 +192,33 @@ imageGlowVisibility.addEventListener('click', () => {
 });
 
 const imageGlowSize = document.getElementById('image-glow-size');
-imageGlowSize.value = imageConfig.glow.size + 'px';
+imageGlowSize.value = imageConfig.glow.size;
 
-imageGlowSize.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        if (imageGlowVisibility.checked == true) {
-            imageConfig.glow.size = parseInt(imageGlowSize.value);
-            imageGlowSize.value = imageConfig.glow.size + 'px';
+imageGlowSize.addEventListener('input', e => {
+    imageConfig.glow.size = imageGlowSize.value;
+    imageGlowSize.value = imageConfig.glow.size;
 
-            document.querySelectorAll('.glow').forEach((i) => {
-                i.style.filter = `blur(${imageConfig.glow.size}px)`;
-            });
-        }
-        setStorage();
-    }
+    if (imageGlowVisibility.checked == true) {
+        document.querySelectorAll('.glow').forEach((i) => {
+            i.style.filter = `blur(${imageConfig.glow.size}px)`;
+        });
+    };
+    setStorage();
 });
 
 const imageGlowOpacity = document.getElementById('image-glow-opacity');
 imageGlowOpacity.value = imageConfig.glow.opacity;
 
 imageGlowOpacity.addEventListener('input', e => {
-    if (imageGlowVisibility.checked == true) {
-        imageConfig.glow.opacity = imageGlowOpacity.value;
-        imageGlowOpacity.value = imageConfig.glow.opacity;
+    imageConfig.glow.opacity = imageGlowOpacity.value;
+    imageGlowOpacity.value = imageConfig.glow.opacity;
 
+    if (imageGlowVisibility.checked == true) {
         document.querySelectorAll('.glow').forEach((i) => {
             i.style.opacity = imageConfig.glow.opacity;
         });
     }
     setStorage();
-});
-
-const imageRounding = document.getElementById('image-radius');
-imageRounding.value = imageConfig.rounding + 'px';
-
-imageRounding.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        imageConfig.rounding = parseInt(imageRounding.value);
-        imageRounding.value = imageConfig.rounding + 'px';
-
-        document.querySelectorAll('img').forEach((i) => {
-            i.style.borderRadius = `${imageConfig.rounding}px`;
-        });
-        setStorage();
-    }
-});
-
-const imageDuration = document.getElementById('image-duration');
-imageDuration.value = imageConfig.duration + 's';
-
-imageDuration.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        imageConfig.duration = parseFloat(imageDuration.value);
-        imageDuration.value = imageConfig.duration + 's';
-
-        document.querySelectorAll('.mySlides').forEach((i) => {
-            i.style.animationDuration = `${imageConfig.duration}s`
-        });
-        setStorage();
-    }
 });
 
 // Caption Configuration
@@ -293,44 +284,41 @@ fontFamily.addEventListener('keypress', e => {
 });
 
 const fontSize = document.getElementById('font-size');
-fontSize.value = captionConfig.text.fontSize + 'px';
+fontSize.value = captionConfig.text.fontSize;
 
-fontSize.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        captionConfig.text.fontSize = parseInt(fontSize.value);
-        fontSize.value = captionConfig.text.fontSize + 'px';
+fontSize.addEventListener('input', e => {
+    captionConfig.text.fontSize = parseInt(fontSize.value);
+    fontSize.value = captionConfig.text.fontSize;
 
-        document.querySelectorAll('.caption').forEach((c) => {
-            c.style.fontSize = `${captionConfig.text.fontSize}px`;
-        });
-        setStorage();
-    }
+    document.querySelectorAll('.caption').forEach((c) => {
+        c.style.fontSize = `${captionConfig.text.fontSize}px`;
+    });
+    setStorage();
 });
 
 const fontWeight = document.getElementById('font-weight');
 fontWeight.value = captionConfig.text.fontWeight;
 
-fontWeight.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        captionConfig.text.fontWeight = fontWeight.value;
-        fontWeight.value = captionConfig.text.fontWeight;
+fontWeight.addEventListener('input', e => {
+    captionConfig.text.fontWeight = fontWeight.value;
+    fontWeight.value = captionConfig.text.fontWeight;
 
-        document.querySelectorAll('.caption').forEach((c) => {
-            c.style.fontWeight = captionConfig.text.fontWeight;
-        });
-        setStorage();
-    }
+    document.querySelectorAll('.caption').forEach((c) => {
+        c.style.fontWeight = captionConfig.text.fontWeight;
+    });
+    setStorage();
 });
 
 const fontColor = document.getElementById('font-color');
+const fontColorBox = document.getElementById('font-color-box');
 fontColor.value = captionConfig.text.color;
-fontColor.style.outline = `3px solid ${captionConfig.text.color}`
+fontColorBox.style.backgroundColor = captionConfig.text.color;
 
 fontColor.addEventListener('keypress', e => {
     if (e.key === 'Enter') {
         captionConfig.text.color = fontColor.value;
         fontColor.value = captionConfig.text.color;
-        fontColor.style.outline = `3px solid ${captionConfig.text.color}`
+        fontColorBox.style.backgroundColor = captionConfig.text.color;
 
         document.querySelectorAll('.caption').forEach((c) => {
             c.style.color = captionConfig.text.color;
@@ -373,15 +361,16 @@ ShadowVisibility.addEventListener('click', () => {
 });
 
 const shadowColor = document.getElementById('text-shadow-color');
+const shadowColorBox = document.getElementById('text-shadow-color-box');
 shadowColor.value = captionConfig.shadow.color;
-shadowColor.style.outline = `3px solid ${captionConfig.shadow.color}`
+shadowColorBox.style.backgroundColor = captionConfig.shadow.color;
 
 
 shadowColor.addEventListener('keypress', e => {
     if (e.key === 'Enter') {
         captionConfig.shadow.color = shadowColor.value;
         shadowColor.value = captionConfig.shadow.color;
-        shadowColor.style.outline = `3px solid ${captionConfig.shadow.color}`
+        shadowColorBox.style.backgroundColor = captionConfig.shadow.color;
 
         if (ShadowVisibility.checked == true) {
             document.querySelectorAll('.caption').forEach((c) => {
@@ -393,41 +382,37 @@ shadowColor.addEventListener('keypress', e => {
 });
 
 const shadowOffset = document.getElementById('text-shadow-offset');
-shadowOffset.value = captionConfig.shadow.offset + 'px';
+shadowOffset.value = captionConfig.shadow.offset;
 
-shadowOffset.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        captionConfig.shadow.offset = shadowOffset.value;
-        shadowOffset.value = captionConfig.shadow.offset + 'px';
+shadowOffset.addEventListener('input', e => {
+    captionConfig.shadow.offset = shadowOffset.value;
+    shadowOffset.value = captionConfig.shadow.offset;
 
-        if (ShadowVisibility.checked == true) {
-            document.querySelectorAll('.caption').forEach((c) => {
-                c.style.textShadow = `${captionConfig.shadow.offset}px ${captionConfig.shadow.offset}px ${captionConfig.shadow.size}px ${captionConfig.shadow.color}`;
-            });
-        };
-        setStorage();
+    if (ShadowVisibility.checked == true) {
+        document.querySelectorAll('.caption').forEach((c) => {
+            c.style.textShadow = `${captionConfig.shadow.offset}px ${captionConfig.shadow.offset}px ${captionConfig.shadow.size}px ${captionConfig.shadow.color}`;
+        });
     };
+    setStorage();
 });
 
 const shadowSize = document.getElementById('text-shadow-size');
-shadowSize.value = captionConfig.shadow.size + 'px';
+shadowSize.value = captionConfig.shadow.size;
 
-shadowSize.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-        captionConfig.shadow.size = shadowSize.value;
-        shadowSize.value = captionConfig.shadow.size + 'px';
+shadowSize.addEventListener('input', e => {
+    captionConfig.shadow.size = shadowSize.value;
+    shadowSize.value = captionConfig.shadow.size;
 
-        if (ShadowVisibility.checked == true) {
-            document.querySelectorAll('.caption').forEach((c) => {
-                c.style.textShadow = `${captionConfig.shadow.offset}px ${captionConfig.shadow.offset}px ${captionConfig.shadow.size}px ${captionConfig.shadow.color}`;
-            });
-        }
-        setStorage();
+    if (ShadowVisibility.checked == true) {
+        document.querySelectorAll('.caption').forEach((c) => {
+            c.style.textShadow = `${captionConfig.shadow.offset}px ${captionConfig.shadow.offset}px ${captionConfig.shadow.size}px ${captionConfig.shadow.color}`;
+        });
     };
+    setStorage();
 });
 
-const allRanges = document.querySelectorAll('.range-wrap');
-allRanges.forEach(wrap => {
+const Ranges = document.querySelectorAll('.range-wrap');
+Ranges.forEach(wrap => {
     const range = wrap.querySelector('input');
     const bubble = wrap.querySelector('.bubble');
 
@@ -439,18 +424,37 @@ allRanges.forEach(wrap => {
         bubble.style.opacity = 0;
     });
 
-    range.addEventListener('input', () => {
-        setBubble(range, bubble);
-    });
-    setBubble(range, bubble);
+    if (bubble.classList.contains('percent')) {
+        range.addEventListener('input', () => {
+            setBubblePercent(range, bubble);
+        });
+        setBubblePercent(range, bubble);
+    }
+
+    if (bubble.classList.contains('px')) {
+        range.addEventListener('input', () => {
+            setBubblePx(range, bubble);
+        });
+        setBubblePx(range, bubble);
+    }
 });
 
-function setBubble(range, bubble) {
+function setBubblePercent(range, bubble) {
     const val = range.value;
     const min = range.min ? range.min : 0;
     const max = range.max ? range.max : 100;
     const newVal = Number(((val - min) * 100) / (max - min));
-    bubble.innerHTML = Math.round(val * 100);
+    bubble.innerHTML = Math.round(val * 100) + '%';
+
+    bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+}
+
+function setBubblePx(range, bubble) {
+    const val = range.value;
+    const min = range.min ? range.min : 0;
+    const max = range.max ? range.max : 100;
+    const newVal = Number(((val - min) * 100) / (max - min));
+    bubble.innerHTML = val + 'px';
 
     bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
 }
