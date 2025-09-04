@@ -1,5 +1,3 @@
-Thank you for buying my image carousal for OBS!
-
 The native slideshow in OBS isn't very customizable and doesn't have all that much flair.
 My image carousal has animations, captions and the added customizability that you would want with it!
 
